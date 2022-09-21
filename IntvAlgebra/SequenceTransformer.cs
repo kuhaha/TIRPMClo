@@ -54,7 +54,7 @@ namespace TIRPClo
                 {
                     //finish tiep 
                     System.Diagnostics.Debug.Assert(curr != null);
-                    if (last_type == Constants.START) // [x+, _) : y- closes current coincidence [x+, y-)
+                    if (last_type == Constants.START) // [x+, _) : y- wiil close current coincidence [x+, y-)
                     {
                         curr.fin_time = t.time;
                         addTiepsForSyms(curr, t.symbols, t.time, Constants.FIN_REP, entity);
@@ -62,7 +62,7 @@ namespace TIRPClo
                         last_endtime = t;
                         continue;
                     }
-                    else  // [_, x-) : y- starts a new coincidence [y-, _) 
+                    else  // [_, x-) : y- will start a new coincidence [_, y-) 
                     {
                         coincidence.fin_time = t.time;
                         addTiepsForSyms(coincidence, t.symbols, t.time, Constants.FIN_REP, entity);
