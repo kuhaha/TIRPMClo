@@ -12,7 +12,7 @@ namespace TIRPClo
         public List<Slice> tieps;
         //Next coincidences after projection by the tieps
         public List<Coincidence> nexts;
-        //For each symbol whose start tiep is in the pattern and the finish tiep is not
+        //For each symbol whose start tiep is in the pattern but the finish tiep is not
         public Dictionary<int, int> sym_mss;
         //The most recent endtime for max gap
         public int last;

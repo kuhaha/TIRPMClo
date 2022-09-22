@@ -13,15 +13,15 @@ namespace TIRPClo
 
             //Execution parameters:
             //number of entities
-            int num_entities = 65;
+            int num_entities = 6; //65;
 
             //minimum vertical support percentage
-            double min_support = 50;
+            double min_support = 3; // 50;
             //maximal gap
-            int maximal_gap = 25;
+            int maximal_gap = 1; // 25;
 
             //dataset name
-            string file_path = "Datasets/ASL/ASL";
+            string file_path = "Datasets/TOY/TOY"; //"Datasets/ASL/ASL";
             //string file_path = "Datasets/Diabetes1/Diabetes1";
 
             run_algorithm(num_entities, min_support, maximal_gap, file_path);
