@@ -61,14 +61,13 @@ namespace TIRPClo
                 }
                 CoincidenceSequence cs = SequenceTransformer.eventSeqToCoincidenceSeq(entityID);
 
-                //****************************
+                //*****Slice to CoincidenceSequence transformation ****
                 //Console.WriteLine("-ENDTIME LIST-");
                 //SequenceTransformer.endtime_list.ForEach(i => Console.Write("{0},", i));               
                 //Console.WriteLine("\n entityID:" + entityID);
-
-                Console.WriteLine("- Coincidence Sequence -\n");
-                Console.WriteLine(cs);
-                //****************************
+                //Console.WriteLine("- Coincidence Sequence -\n");
+                //Console.WriteLine(cs);
+                //*****************************************************
 
                 PatternInstance pi = new PatternInstance();
                 cs.entity = entityID;
@@ -91,8 +90,9 @@ namespace TIRPClo
                     List<Slice> tieps = curr.tieps;
                     removed_co_tieps = 0;
                     for (int i = 0; i < tieps.Count + removed_co_tieps; i++)
-                    {//find and remove slices not in frequent master_tieps (infrequent ones already filtered out)  
-                        Slice t = tieps[i - removed_co_tieps];
+                    {
+                        //find and remove slices not in frequent master_tieps (infrequent ones already filtered out)  
+                        Slice t = tieps[i - removed_co_tieps]; 
                         if (!SlicesHandler.master_tieps.ContainsKey(t.premitive_rep))
                         {
                             //tieps.Remove(t);
@@ -147,6 +147,10 @@ namespace TIRPClo
         {
             STI ei2 = t.e;
             return Constants.MAX_GAP > ei2.st_time - time;
+        }
+        public static bool constraintHolds()
+        {
+            return true;
         }
         //Extend slice projectors
         public Dictionary<string, SliceProjector> tiepsFreq_alt(string last_t, Dictionary<string, SliceProjector> sf)
@@ -450,11 +454,10 @@ namespace TIRPClo
                         if (!tieps_instances.ContainsKey(tiep))
                         {
                             tieps_instances.Add(tiep, new SliceProjector());
-                            tieps_instances[tiep].sup_entities.Add(ent_id);
-                            //Not the first time we meet the tiep
+                            tieps_instances[tiep].sup_entities.Add(ent_id);         
                         }
-                        else
-                        {
+                        else //Not the first time we met the tiep
+                        {   
                             if (!tieps_instances[tiep].sup_entities.Contains(ent_id))
                             {
                                 tieps_instances[tiep].sup_entities.Add(ent_id);
@@ -471,7 +474,7 @@ namespace TIRPClo
             }
             return tieps_instances;
         }
-        //True iff curr is meet and it is the first of coes or it is the second of coes when the first is partial 
+        //True if curr is meet and it is the first of coes or it is the second of coes when the first is partial 
         private static bool mayMeet(Coincidence curr, Coincidence coes)
         {
             return curr.isMeet && 
