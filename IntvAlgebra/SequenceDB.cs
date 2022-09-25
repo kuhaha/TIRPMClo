@@ -64,9 +64,9 @@ namespace TIRPClo
                 //*****Slice to CoincidenceSequence transformation ****
                 //Console.WriteLine("-ENDTIME LIST-");
                 //SequenceTransformer.endtime_list.ForEach(i => Console.Write("{0},", i));               
-                //Console.WriteLine("\n entityID:" + entityID);
-                //Console.WriteLine("- Coincidence Sequence -\n");
-                //Console.WriteLine(cs);
+                Console.WriteLine("\n entityID:" + entityID);
+                Console.WriteLine("- Coincidence Sequence -\n");
+                Console.WriteLine(cs);
                 //*****************************************************
 
                 PatternInstance pi = new PatternInstance();
@@ -162,6 +162,7 @@ namespace TIRPClo
             }
             if (last_t[0] == Constants.CO_REP || last_t[0] == Constants.MEET_REP)
             {
+                //Console.WriteLine("CO_REP: " + last_t + " ");
                 last_t = last_t.Substring(1);
             }
             Dictionary<string, SliceProjector> tieps_instances = new Dictionary<string, SliceProjector>();

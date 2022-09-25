@@ -13,19 +13,15 @@ namespace TIRPClo
 
             //Execution parameters:
             //number of entities
-            int num_entities = 6; //65;
-
+            int num_entities = 6;//65;
             //minimum vertical support percentage
-            double min_support = 3; // 50;
+            double min_support = 3; //50;
             //maximal gap
-            int maximal_gap = 1; // 25;
-
+            int maximal_gap = 1;//30;
             //dataset name
-            string file_path = "Datasets/TOY/TOY"; //"Datasets/ASL/ASL";
-            //string file_path = "Datasets/Diabetes1/Diabetes1";
+            string file_path = "Datasets/toy/toy";//"Datasets/ASL/ASL";
 
-            run_algorithm(num_entities, min_support, maximal_gap, file_path);
-    
+            run_algorithm(num_entities, min_support, maximal_gap, file_path);   
         }
 
         //Execute the algorithm
@@ -41,9 +37,10 @@ namespace TIRPClo
             Constants.MAX_GAP = maximal_gap;
 
             long dt1 = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+
+            Console.WriteLine(file_path);
             //STIs transformation and index construction 
             SequenceDB sdb = SequenceDB.createSequencesKLF(Constants.FILE_NAME);
-
             //Main Algorithm
             TIRPMCloAlg.runTIRPMClo(sdb);
 

@@ -62,6 +62,7 @@ namespace TIRPClo
                             break;
                         }
                         string t = entry.Key[0] == Constants.CO_REP ? entry.Key.Substring(1) : entry.Key;
+                        
                         t = t.Replace(Constants.FIN_REP, Constants.ST_REP);
                         if (bets.ContainsKey(t))
                         {
@@ -86,10 +87,11 @@ namespace TIRPClo
                 {
                     continue;
                 }
-                //Finishing tieps only
+                //Finishing tieps 
                 if (z.Key[z.Key.Length - 1] == Constants.FIN_REP)
                 {
                     string tmp = z.Key[0] == Constants.CO_REP ? z.Key.Substring(1) : z.Key;
+                    
                     if (projDB.pre_matched.Contains(tmp))
                     { 
                         SequenceDB alpha_projDB = projDB.projectDB(z.Key, LFs[z.Key]);
@@ -106,7 +108,7 @@ namespace TIRPClo
                 }
                 else
                 {
-                    //Starting tieps only
+                    //Starting tieps 
                     SequenceDB alpha_projDB = projDB.projectDB(z.Key, LFs[z.Key]);
                     if (alpha_projDB.sup >= Constants.MINSUP)
                     {
