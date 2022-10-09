@@ -15,7 +15,7 @@ namespace TIRPClo
             //number of entities
             int num_entities = 6;//65;
             //minimum vertical support percentage
-            double min_support = 3; //50;
+            double min_support = 50;
             //maximal gap
             int maximal_gap = 1;//30;
             //dataset name
